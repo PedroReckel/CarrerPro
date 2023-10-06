@@ -39,6 +39,7 @@ const passwordChange = (newText) => {
         <View style={styles.buttonArea}>
             <TouchableOpacity
                 style={styles.buttonSignin}
+                onPress={() => navigation.navigate('Home')}
             >
                 <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>

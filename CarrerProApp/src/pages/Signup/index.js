@@ -7,15 +7,25 @@ export default function Signup() {
 
 const navigation = useNavigation();
 
-const [text, setText] = useState('');
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [password2, setConfirPassword] = useState('');
 
 const emailChange = (newText) => {
-    setText(newText);
+    setEmail(newText);
+}
+
+const nameChange = (newText) => {
+    setName(newText);
 }
 
 const passwordChange = (newText) => {
     setPassword(newText);
+}
+
+const password2Change = (newText) => {
+    setConfirPassword(newText);
 }
 
  return (
@@ -27,14 +37,14 @@ const passwordChange = (newText) => {
         <TextInput
             style={styles.input}
             placeholder='Digite seu nome...'
-            onChangeText={emailChange}
-            value={text}
+            onChangeText={nameChange}
+            value={name}
         />
         <TextInput
             style={styles.input}
             placeholder='Digite seu e-mail...'
             onChangeText={emailChange}
-            value={text}
+            value={email}
         />
         <TextInput
             style={styles.input}
@@ -47,8 +57,8 @@ const passwordChange = (newText) => {
             style={styles.input}
             placeholder='Confirme sua senha...'
             secureTextEntry={true}
-            onChangeText={passwordChange}
-            value={password}
+            onChangeText={password2Change}
+            value={password2}
         />
         <View style={styles.buttonArea}>
             <TouchableOpacity
