@@ -13,6 +13,9 @@ export default function Home() {
       />
       <Header/>
       <Menu/>
+      <View>
+        <Text>Aqui vão as vagas</Text>
+      </View>
     </View>
   );
 }
