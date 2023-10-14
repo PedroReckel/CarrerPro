@@ -4,13 +4,13 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 
-export default function Vagas() {
+export default function Cursos() {
   // Array de dados com os diferentes conteúdos
   const contentData = [
-    { title: 'Desenvolvedor Java', imageSource: require('../../../assets/vixsystem.jpg') },
-    { title: 'Assistente de TI', imageSource: require('../../../assets/gsm.jpg') },
-    { title: 'Engenhero de dados', imageSource: require('../../../assets/picpay.png') },
-    { title: 'DBA open DB', imageSource: require('../../../assets/at.jpg') },
+    { title: 'Curso em Vídeo', imageSource: require('../../../assets/cursoEmVideo.png') },
+    { title: 'DIO.ME Curso Gratuitos', imageSource: require('../../../assets/dioMe.png') },
+    { title: 'SENAC Aulas EAD', imageSource: require('../../../assets/SENAC.png') },
+    { title: 'SENAI Aulas EAD', imageSource: require('../../../assets/senai.png') },
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function Vagas() {
 
       <View style={styles.main}>
         <View style={styles.title}>
-          <Text style={styles.titleText}>VAGAS</Text>
+          <Text style={styles.titleText}>CURSOS</Text>
         </View>
 
         {contentData.map((item, index) => (
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '95%',
     marginLeft: 10, // Adicione margem à esquerda para espaçamento horizontal
-    elevation: 5
+    elevation: 5,
   },
   image: {
     width: 90,

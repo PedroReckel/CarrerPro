@@ -10,11 +10,11 @@ const navigation = useNavigation();
 
  return (
     <View style={styles.menu}>
-        <View style={styles.menuView}>
+        <View style={styles.menuView} onPress={() => navigation.navigate('Home')}>
             <Feather name="home" size={20} color="#3496ff" style={styles.icon} />
         </View>
         <View style={styles.menuView}>
-            <Text style={styles.menuText}>Cursos</Text>
+            <Text style={styles.menuText} onPress={() => navigation.navigate('Cursos')}>Cursos</Text>
         </View>
         <View style={styles.menuView}>
             <Text style={styles.menuText} onPress={() => navigation.navigate('Vagas')}>Vagas</Text>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         marginTop: 25,
         backgroundColor: 'white',
         borderRadius: 5,
+        elevation: 5,
       },
       menuText: {
         color: '#3496ff',
