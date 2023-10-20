@@ -10,8 +10,8 @@ const navigation = useNavigation();
 
  return (
     <View style={styles.menu}>
-        <View style={styles.menuView} onPress={() => navigation.navigate('Home')}>
-            <Feather name="home" size={20} color="#3496ff" style={styles.icon} />
+        <View style={styles.menuView}>
+            <Feather name="home" size={20} color="#3496ff" style={styles.icon} onPress={() => navigation.navigate('Home')}/>
         </View>
         <View style={styles.menuView}>
             <Text style={styles.menuText} onPress={() => navigation.navigate('Cursos')}>Cursos</Text>

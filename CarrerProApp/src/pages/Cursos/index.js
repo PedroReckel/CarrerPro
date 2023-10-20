@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     width: '95%',
     marginLeft: 10, // Adicione margem à esquerda para espaçamento horizontal
     elevation: 5,
+    borderRadius: 5,
   },
   image: {
     width: 90,
