@@ -1,10 +1,17 @@
 import React from 'react';
-import { View, Text, TextInput, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
+import Questions from '../../components/Questions';
+import Signup from '../Signup';
 
 export default function Home() {
+
+const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Image
@@ -15,62 +22,28 @@ export default function Home() {
       <Menu />
 
       <View style={styles.main}>
-        <ScrollView style={styles.scrollView}>
-          <Text style={styles.question}>Quais são seus interesses pessoais?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Quais são suas habilidades e aptidões?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Quais são seus valores?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Quais são seus objetivos de longo prazo?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Que tipo de ambiente de trabalho você prefere? </Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Quais são suas preocupações financeiras?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Você prefere uma carreira com crescimento e oportunidades de avanço?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Existe uma profissão que você admira ou que gostaria de explorar mais?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Você está disposto a mudar de localização para seguir uma carreira?</Text>
-          <TextInput
-              style={styles.input}
-          />
-
-          <Text style={styles.question}>Você já tem alguma experiência em um campo de interesse?</Text>
-          <TextInput
-              style={styles.input}
-          />
-          
-          <Text style={styles.question}>Como sua escolha de carreira afetará sua qualidade de vida e equilíbrio entre trabalho e vida pessoal?</Text>
-          <TextInput
-              style={styles.input}
-          />
+        <ScrollView>
+          <Questions question={"Quais são seus interesses pessoais?"}/>
+          <Questions question={"Quais são suas habilidades e aptidões?"}/>
+          <Questions question={"Quais são seus valores?"}/>
+          <Questions question={"Quais são seus objetivos de longo prazo?"}/>
+          <Questions question={"Que tipo de ambiente de trabalho você prefere?"}/>
+          <Questions question={"Quais são suas preocupações financeiras?"}/>
+          <Questions question={"Você prefere uma carreira com crescimento e oportunidades de avanço?"}/>
+          <Questions question={"Existe uma profissão que você admira ou que gostaria de explorar mais?"}/>
+          <Questions question={"Você está disposto a mudar de localização para seguir uma carreira?"}/>
+          <Questions question={"Você já tem alguma experiência em um campo de interesse?"}/>
+          <Questions question={"Como sua escolha de carreira afetará sua qualidade de vida e equilíbrio entre trabalho e vida pessoal?"}/>
         </ScrollView>
+
+            <View style={styles.buttonArea}>
+              <TouchableOpacity
+                  style={styles.buttonSingup}
+                  onPress={() => navigation.navigate('Cursos')}
+              >
+              <Text style={styles.buttonText}>Enviar</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     </View>
   );
@@ -96,19 +69,22 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 10,
   },
-  input: {
-    width: '100%',
-    height: 40,
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    borderColor: 'gray',
-    borderRadius: 5,
-    backgroundColor: '#fafafa',
-    marginBottom: 30,
-    elevation: 5,
+  buttonArea: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
   },
-  question: {
-    fontSize: 16,
-    marginBottom: 10,
+    buttonSingup: {
+        width: '35%',
+        backgroundColor: '#0e7114',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        elevation: 5,
+    },
+    buttonText: {
+      color: 'white',
+      fontSize: 18,
+      textAlign: 'center',
   }
 });
