@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
@@ -7,6 +7,10 @@ import Menu from '../../components/Menu';
 export default function Vagas() {
   // Array de dados com os diferentes conteúdos
   const contentData = [
+    { title: 'DEV de Sistemas JR', imageSource: require('../../../assets/picpay.png') },
+    { title: 'DEV Full Stack PL', imageSource: require('../../../assets/meta.jpg') },
+    { title: 'Técnico de Infraestrutura', imageSource: require('../../../assets/ish.png') },
+    { title: 'Administrador de Redes', imageSource: require('../../../assets/VipRede.png') },
     { title: 'Desenvolvedor Java', imageSource: require('../../../assets/vixsystem.jpg') },
     { title: 'Assistente de TI', imageSource: require('../../../assets/gsm.jpg') },
     { title: 'Engenhero de dados', imageSource: require('../../../assets/picpay.png') },
@@ -27,14 +31,16 @@ export default function Vagas() {
           <Text style={styles.titleText}>VAGAS</Text>
         </View>
 
-        {contentData.map((item, index) => (
-          <View style={styles.content} key={index}>
-            <View style={styles.cellContent}>
-              <Image style={styles.image} source={item.imageSource} />
-              <Text style={styles.jobsText}>{item.title}</Text>
+        <ScrollView>
+          {contentData.map((item, index) => (
+            <View style={styles.content} key={index}>
+              <View style={styles.cellContent}>
+                <Image style={styles.image} source={item.imageSource} />
+                <Text style={styles.jobsText}>{item.title}</Text>
+              </View>
             </View>
-          </View>
-        ))}
+          ))}
+        </ScrollView>
       </View>
     </View>
   );

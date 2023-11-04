@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
@@ -7,10 +7,14 @@ import Menu from '../../components/Menu';
 export default function Cursos() {
   // Array de dados com os diferentes conteúdos
   const contentData = [
+    { title: 'Curso de JavaScript', imageSource: require('../../../assets/cod3r.png') },
+    { title: 'Curso de Angular', imageSource: require('../../../assets/alura.png') },
+    { title: 'Full Cycle 3.0', imageSource: require('../../../assets/devfullcicle.png') },
+    { title: 'Curso React Native', imageSource: require('../../../assets/rocketseat.png') },
     { title: 'Curso em Vídeo', imageSource: require('../../../assets/cursoEmVideo.png') },
-    { title: 'DIO.ME Curso Gratuitos', imageSource: require('../../../assets/dioMe.png') },
-    { title: 'SENAC Aulas EAD', imageSource: require('../../../assets/SENAC.png') },
-    { title: 'SENAI Aulas EAD', imageSource: require('../../../assets/senai.png') },
+    { title: 'Faculdade De TI', imageSource: require('../../../assets/fiap.png') },
+    { title: 'SENAC - Aulas EAD', imageSource: require('../../../assets/SENAC.png') },
+    { title: 'SENAI - Aulas EAD', imageSource: require('../../../assets/senai.png') },
   ];
 
   return (
@@ -27,14 +31,16 @@ export default function Cursos() {
           <Text style={styles.titleText}>CURSOS</Text>
         </View>
 
-        {contentData.map((item, index) => (
-          <View style={styles.content} key={index}>
-            <View style={styles.cellContent}>
-              <Image style={styles.image} source={item.imageSource} />
-              <Text style={styles.jobsText}>{item.title}</Text>
+        <ScrollView>
+          {contentData.map((item, index) => (
+            <View style={styles.content} key={index}>
+              <View style={styles.cellContent}>
+                <Image style={styles.image} source={item.imageSource} />
+                <Text style={styles.jobsText}>{item.title}</Text>
+              </View>
             </View>
-          </View>
-        ))}
+          ))}
+        </ScrollView>
       </View>
     </View>
   );

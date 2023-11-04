@@ -48,7 +48,7 @@ const passwordChange = (newText) => {
                 style={styles.buttonSingup}
                 onPress={() => navigation.navigate('Signup')}
             >
-                <Text style={styles.buttonText}>Cadastre-se</Text>
+                <Text style={styles.buttonText}>Cadastro</Text>
             </TouchableOpacity>
         </View>
    </View>
