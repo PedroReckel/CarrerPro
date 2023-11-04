@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Signin() {
@@ -15,6 +15,11 @@ const emailChange = (newText) => {
 
 const passwordChange = (newText) => {
     setPassword(newText);
+}
+
+const ExternalLink = () => {
+    const url = 'https://github.com/PedroReckel/CarrerPro/tree/main'
+    Linking.openURL(url)
 }
 
  return (
@@ -51,6 +56,9 @@ const passwordChange = (newText) => {
                 <Text style={styles.buttonText}>Cadastro</Text>
             </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.footer} onPress={() => ExternalLink()}>
+            <Text>Carrer Pro Coporation © 2023</Text>
+        </TouchableOpacity>
    </View>
   );
 }
@@ -103,5 +111,12 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        alignItems: 'center',
+        paddingVertical: 20
     }
 })

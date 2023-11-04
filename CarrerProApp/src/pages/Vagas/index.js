@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
 
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
@@ -7,15 +7,19 @@ import Menu from '../../components/Menu';
 export default function Vagas() {
   // Array de dados com os diferentes conteúdos
   const contentData = [
-    { title: 'DEV de Sistemas JR', imageSource: require('../../../assets/picpay.png') },
-    { title: 'DEV Full Stack PL', imageSource: require('../../../assets/meta.jpg') },
-    { title: 'Técnico de Infraestrutura', imageSource: require('../../../assets/ish.png') },
-    { title: 'Administrador de Redes', imageSource: require('../../../assets/VipRede.png') },
-    { title: 'Desenvolvedor Java', imageSource: require('../../../assets/vixsystem.jpg') },
-    { title: 'Assistente de TI', imageSource: require('../../../assets/gsm.jpg') },
-    { title: 'Engenhero de dados', imageSource: require('../../../assets/picpay.png') },
-    { title: 'DBA open DB', imageSource: require('../../../assets/at.jpg') },
+    { title: 'DEV de Sistemas JR', imageSource: require('../../../assets/picpay.png'), link: 'https://www.linkedin.com/jobs/view/3755811132' },
+    { title: 'DEV Full Stack PL', imageSource: require('../../../assets/meta.jpg'), link: 'https://www.linkedin.com/jobs/view/3755811132' },
+    { title: 'Técnico de Infraestrutura', imageSource: require('../../../assets/ish.png'), link: 'https://www.linkedin.com/jobs/view/3728671128' },
+    { title: 'Administrador de Redes', imageSource: require('../../../assets/VipRede.png'), link: 'https://www.linkedin.com/jobs/view/3745011156' },
+    { title: 'Desenvolvedor Java', imageSource: require('../../../assets/working.jpg'), link: 'https://www.linkedin.com/jobs/view/3747593911' },
+    { title: 'Assistente de TI - PCD', imageSource: require('../../../assets/totvs.png'), link: 'https://www.linkedin.com/jobs/view/3743716747' },
+    { title: 'Engenhero de dados', imageSource: require('../../../assets/dasa.jpg'), link: 'https://www.linkedin.com/jobs/view/3747459754' },
+    { title: 'DBA open DB', imageSource: require('../../../assets/tcs.jpg'), link: 'https://www.linkedin.com/jobs/view/3738585763' },
   ];
+
+  const ExternalLink = (url) => {
+    Linking.openURL(url)
+  } 
 
   return (
     <View style={styles.container}>
@@ -34,10 +38,10 @@ export default function Vagas() {
         <ScrollView>
           {contentData.map((item, index) => (
             <View style={styles.content} key={index}>
-              <View style={styles.cellContent}>
-                <Image style={styles.image} source={item.imageSource} />
+              <TouchableOpacity style={styles.cellContent} onPress={() => ExternalLink(item.link)}>
+                <Image style={styles.image} source={item.imageSource}/>
                 <Text style={styles.jobsText}>{item.title}</Text>
-              </View>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>

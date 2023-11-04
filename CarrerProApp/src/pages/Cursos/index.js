@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'react-native';
 
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
@@ -7,15 +7,19 @@ import Menu from '../../components/Menu';
 export default function Cursos() {
   // Array de dados com os diferentes conteúdos
   const contentData = [
-    { title: 'Curso de JavaScript', imageSource: require('../../../assets/cod3r.png') },
-    { title: 'Curso de Angular', imageSource: require('../../../assets/alura.png') },
-    { title: 'Full Cycle 3.0', imageSource: require('../../../assets/devfullcicle.png') },
-    { title: 'Curso React Native', imageSource: require('../../../assets/rocketseat.png') },
-    { title: 'Curso em Vídeo', imageSource: require('../../../assets/cursoEmVideo.png') },
-    { title: 'Faculdade De TI', imageSource: require('../../../assets/fiap.png') },
-    { title: 'SENAC - Aulas EAD', imageSource: require('../../../assets/SENAC.png') },
-    { title: 'SENAI - Aulas EAD', imageSource: require('../../../assets/senai.png') },
+    { title: 'Curso de JavaScript', imageSource: require('../../../assets/cod3r.png'), link: 'https://www.udemy.com/course/curso-web/' },
+    { title: 'Curso de Angular', imageSource: require('../../../assets/alura.png'), link: 'https://www.alura.com.br' },
+    { title: 'Full Cycle 3.0', imageSource: require('../../../assets/devfullcicle.png'), link: 'https://curso.fullcycle.com.br/curso-fullcycle/' },
+    { title: 'Curso React Native', imageSource: require('../../../assets/rocketseat.png'), link: 'https://www.rocketseat.com.br'},
+    { title: 'Curso em Vídeo', imageSource: require('../../../assets/cursoEmVideo.png'), link: 'https://www.cursoemvideo.com' },
+    { title: 'Faculdade De TI', imageSource: require('../../../assets/fiap.png'), link: 'https://www.fiap.com.br' },
+    { title: 'SENAC - Aulas EAD', imageSource: require('../../../assets/SENAC.png'), link: 'https://www.es.senac.br' },
+    { title: 'SENAI - Aulas EAD', imageSource: require('../../../assets/senai.png'), link: 'https://senaies.com.br' },
   ];
+
+  const ExternalLink = (url) => {
+    Linking.openURL(url)
+  }
 
   return (
     <View style={styles.container}>
@@ -34,10 +38,10 @@ export default function Cursos() {
         <ScrollView>
           {contentData.map((item, index) => (
             <View style={styles.content} key={index}>
-              <View style={styles.cellContent}>
+              <TouchableOpacity style={styles.cellContent} onPress={() => ExternalLink(item.link)}>
                 <Image style={styles.image} source={item.imageSource} />
                 <Text style={styles.jobsText}>{item.title}</Text>
-              </View>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>
