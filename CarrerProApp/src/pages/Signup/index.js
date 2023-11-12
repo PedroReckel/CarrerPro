@@ -3,6 +3,9 @@ import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text } from 'reac
 
 import { useNavigation } from '@react-navigation/native';
 
+import { baseApiUrl } from '../../config';
+import axios from 'axios';  
+
 export default function Signup() {
 
 const navigation = useNavigation();
@@ -10,7 +13,7 @@ const navigation = useNavigation();
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-const [password2, setConfirPassword] = useState('');
+const [confirmPassword, setConfirPassword] = useState('');
 
 const emailChange = (newText) => {
     setEmail(newText);
@@ -24,8 +27,28 @@ const passwordChange = (newText) => {
     setPassword(newText);
 }
 
-const password2Change = (newText) => {
+const confirmPasswordChange = (newText) => {
     setConfirPassword(newText);
+}
+
+const signup = () => {
+    const userData = {
+        name,
+        email,
+        password,
+        confirmPassword
+    };
+
+    console.log('Dados do usuário:', userData);
+
+    axios.post(`${baseApiUrl}/signup`, userData)
+        .then(res => {
+            console.log(`Cadastro bem sucedido! ${res.data}`);
+            navigation.navigate('Signin');
+        })
+        .catch(error => {
+            console.log(`Erro no cadastro: ${error}`);
+        });
 }
 
  return (
@@ -57,13 +80,13 @@ const password2Change = (newText) => {
             style={styles.input}
             placeholder='Confirme sua senha...'
             secureTextEntry={true}
-            onChangeText={password2Change}
-            value={password2}
+            onChangeText={confirmPasswordChange}
+            value={confirmPassword}
         />
         <View style={styles.buttonArea}>
             <TouchableOpacity
                 style={styles.buttonSingup}
-                onPress={() => navigation.navigate('Signin')}
+                onPress={signup}
             >
                 <Text style={styles.buttonText}>Cadastro</Text>
             </TouchableOpacity>

@@ -1,8 +1,10 @@
 const app = require('express')()
+const cors = require('cors')
 const consign = require('consign')
 const db = require('./config/db')
 
 app.db = db
+app.use(cors())
 
 consign()
     .include('./config/passport.js')

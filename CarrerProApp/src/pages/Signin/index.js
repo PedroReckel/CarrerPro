@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { baseApiUrl } from '../../config';
+import axios from 'axios';  
+
 export default function Signin() {
 
 const navigation = useNavigation();
 
-const [text, setText] = useState('');
+const [email, setText] = useState('');
 const [password, setPassword] = useState('');
 
 const emailChange = (newText) => {
@@ -22,6 +25,22 @@ const ExternalLink = () => {
     Linking.openURL(url)
 }
 
+const signin = () => {
+    const userData = {
+        email,
+        password
+    };
+
+    axios.post(`${baseApiUrl}/signin`, userData)
+        .then(res => {
+            console.log(`Cadastro bem sucedido! ${res.data}`);
+            navigation.navigate('Home');
+        })
+        .catch(error => {
+            console.log(`Erro no cadastro: ${error}`);
+        });
+}
+
  return (
    <View style={styles.container}>
         <Image
@@ -32,7 +51,7 @@ const ExternalLink = () => {
             style={styles.input}
             placeholder='Digite seu e-mail...'
             onChangeText={emailChange}
-            value={text}
+            value={email}
         />
         <TextInput
             style={styles.input}
@@ -44,7 +63,7 @@ const ExternalLink = () => {
         <View style={styles.buttonArea}>
             <TouchableOpacity
                 style={styles.buttonSignin}
-                onPress={() => navigation.navigate('Home')}
+                onPress={signin}
             >
                 <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
