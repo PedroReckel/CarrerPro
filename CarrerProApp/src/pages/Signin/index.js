@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { baseApiUrl } from '../../config';
 import axios from 'axios';  
@@ -26,6 +27,11 @@ const ExternalLink = () => {
 }
 
 const signin = () => {
+    if(!email.trim() || !password.trim()) {
+        console.log('Por favor, preencha todos os campos.');
+        return;
+    }
+
     const userData = {
         email,
         password
@@ -33,7 +39,10 @@ const signin = () => {
 
     axios.post(`${baseApiUrl}/signin`, userData)
         .then(res => {
-            console.log(`Cadastro bem sucedido! ${res.data}`);
+            // Armazenando as informações do usuário no AsyncStorage 
+            AsyncStorage.setItem('userData', JSON.stringify(res.data));
+
+            console.log('Cadastro bem sucedido!', JSON.stringify(res.data, null, 2));
             navigation.navigate('Home');
         })
         .catch(error => {

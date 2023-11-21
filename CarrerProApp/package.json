@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.5",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/stack": "^6.3.18",
     "axios": "^1.6.1",
@@ -16,15 +17,18 @@
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-native": "0.72.5",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-vector-icons": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true,  
+  "private": true,
   "expo": {
     "android": {
-      "permissions": ["INTERNET"]
+      "permissions": [
+        "INTERNET"
+      ]
     }
   }
 }
